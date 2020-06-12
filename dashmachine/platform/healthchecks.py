@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 """
 ##### Healthchecks
 Display information from Healthchecks API
@@ -56,6 +57,8 @@ value_template = {{ value_template }}
 """
 
 import json
+=======
+>>>>>>> 9ecb74960112bbfda057651c42ce802a2f8e1638
 from flask import render_template_string
 import requests
 
@@ -155,6 +158,106 @@ class Healthchecks(object):
 
 
 class Platform:
+<<<<<<< HEAD
+=======
+    def docs(self):
+        documentation = {
+            "name": "healthchecks",
+            "author": "Thlb",
+            "author_url": "https://github.com/Thlb",
+            "version": 1.0,
+            "description": "Display information from Healthchecks API",
+            "returns": "`value_template` as rendered string",
+            "returns_json_keys": [
+                "status",
+                "count_checks",
+                "count_up",
+                "count_down",
+                "count_grace",
+                "count_paused",
+                "error (for debug)",
+            ],
+            "example": """
+```ini
+[healthchecks-data]
+platform = healthchecks
+prefix = http://
+host = 192.168.0.110
+port = 8080
+api_key = {{ API Key }}
+project = {{ Project name }}
+verify = False
+value_template = {{error}}<p style="text-align:right;text-transform:uppercase;font-size:14px;font-family: monospace;"><i style="position: relative; top: .2rem" class="material-icons md-18 theme-success-text" title="Up">fiber_manual_record</i>{{count_up}}<i style="position: relative; top: .2rem" class="material-icons md-18 theme-warning-text" title="Grace">fiber_manual_record</i>{{count_grace}}<i style="position: relative; top: .2rem" class="material-icons md-18 theme-failure-text" title="Down">fiber_manual_record</i>{{count_down}}</p>
+
+[Healthchecks]
+prefix = http://
+url  = 192.168.0.110
+icon = static/images/apps/healthchecks.png
+description = Healthchecks is a watchdog for your cron jobs. It's a web server that listens for pings from your cron jobs, plus a web interface.
+open_in = this_tab
+data_sources = healthchecks-data
+```
+            """,
+            "variables": [
+                {
+                    "variable": "[variable_name]",
+                    "description": "Name for the data source.",
+                    "default": "None, entry is required",
+                    "options": ".ini header",
+                },
+                {
+                    "variable": "platform",
+                    "description": "Name of the platform.",
+                    "default": "healthchecks",
+                    "options": "healthchecks",
+                },
+                {
+                    "variable": "prefix",
+                    "description": "The prefix for the app's url.",
+                    "default": "",
+                    "options": "web prefix, e.g. http:// or https://",
+                },
+                {
+                    "variable": "host",
+                    "description": "Healthchecks Host",
+                    "default": "",
+                    "options": "url,ip",
+                },
+                {
+                    "variable": "port",
+                    "description": "Healthchecks Port",
+                    "default": "",
+                    "options": "port",
+                },
+                {
+                    "variable": "api_key",
+                    "description": "ApiKey",
+                    "default": "",
+                    "options": "api key",
+                },
+                {
+                    "variable": "project",
+                    "description": "Healthchecks project name",
+                    "default": "",
+                    "options": "project name",
+                },
+                {
+                    "variable": "verify",
+                    "description": "Turn TLS verification on or off, default is true",
+                    "default": "",
+                    "options": "true,false",
+                },
+                {
+                    "variable": "value_template",
+                    "description": "Jinja template for how the returned data from API is displayed.",
+                    "default": "",
+                    "options": "jinja template",
+                },
+            ],
+        }
+        return documentation
+
+>>>>>>> 9ecb74960112bbfda057651c42ce802a2f8e1638
     def __init__(self, *args, **kwargs):
         # parse the user's options from the config entries
         for key, value in kwargs.items():

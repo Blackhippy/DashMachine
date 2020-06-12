@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 """
 ##### Tautulli
 Display information from Tautulli API
@@ -55,6 +56,8 @@ value_template = {{ value_template }}
 >```
 """
 
+=======
+>>>>>>> 9ecb74960112bbfda057651c42ce802a2f8e1638
 from flask import render_template_string
 import requests
 
@@ -188,6 +191,102 @@ class Tautulli(object):
 
 
 class Platform:
+<<<<<<< HEAD
+=======
+    def docs(self):
+        documentation = {
+            "name": "tautulli",
+            "author": "Thlb",
+            "author_url": "https://github.com/Thlb",
+            "version": 1.0,
+            "description": "Display information from Tautulli API",
+            "returns": "`value_template` as rendered string",
+            "returns_json_keys": [
+                "stream_count",
+                "stream_count_direct_play",
+                "stream_count_direct_stream",
+                "stream_count_transcode",
+                "total_bandwidth",
+                "wan_bandwidth",
+                "update_available",
+                "update_message",
+                "error (for debug)",
+            ],
+            "example": """
+```ini
+[tautulli-data]
+platform = tautulli
+prefix = http://
+host = 192.168.0.110
+port = 8181
+api_key = myApiKey
+verify = False
+value_template = {{error}}Active sessions : {{stream_count}}
+
+[Tautulli]
+prefix = http://
+url = 192.168.0.110:8181
+icon = static/images/apps/tautulli.png
+sidebar_icon = static/images/apps/tautulli.png
+description = A Python based monitoring and tracking tool for Plex Media Server
+open_in = this_tab
+data_sources = tautulli-data
+```
+            """,
+            "variables": [
+                {
+                    "variable": "[variable_name]",
+                    "description": "Name for the data source.",
+                    "default": "None, entry is required",
+                    "options": ".ini header",
+                },
+                {
+                    "variable": "platform",
+                    "description": "Name of the platform.",
+                    "default": "tautulli",
+                    "options": "tautulli",
+                },
+                {
+                    "variable": "prefix",
+                    "description": "The prefix for the app's url.",
+                    "default": "",
+                    "options": "web prefix, e.g. http:// or https://",
+                },
+                {
+                    "variable": "host",
+                    "description": "Tautulli Host",
+                    "default": "",
+                    "options": "url,ip",
+                },
+                {
+                    "variable": "port",
+                    "description": "Tautulli Port",
+                    "default": "",
+                    "options": "port",
+                },
+                {
+                    "variable": "api_key",
+                    "description": "ApiKey",
+                    "default": "",
+                    "options": "api key",
+                },
+                {
+                    "variable": "verify",
+                    "description": "Turn TLS verification on or off, default is true",
+                    "default": "",
+                    "options": "true,false",
+                },
+                {
+                    "variable": "value_template",
+                    "description": "Jinja template for how the returned data from API is displayed.",
+                    "default": "",
+                    "options": "jinja template",
+                },
+            ],
+        }
+        return documentation
+
+>>>>>>> 9ecb74960112bbfda057651c42ce802a2f8e1638
     def __init__(self, *args, **kwargs):
         # parse the user's options from the config entries
         for key, value in kwargs.items():
